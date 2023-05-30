@@ -36,4 +36,6 @@ public partial class Agent
     public virtual Rank Rank { get; set; } = null!;
 
     public virtual Agentstatus Status { get; set; } = null!;
+
+
 }
