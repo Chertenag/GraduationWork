@@ -15,4 +15,8 @@
     <Folder Include="Controllers\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Contora.Core\Contora.Core.csproj" />
+  </ItemGroup>
+
 </Project>

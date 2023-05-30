@@ -7,8 +7,10 @@ namespace Contora.Web
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
+            //Устанавливаем строку подключения к БД.
+            Core.Settings.ConnectionString = builder.Configuration.GetConnectionString("Contora");
 
+            // Add services to the container.
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();
