@@ -15,10 +15,9 @@ namespace Contora.Web.Models
             }
         }
 
-        public async Task<List<Agent>> GetAgent(CancellationToken token)
+        public async Task<List<Agent>> GetAgents(CancellationToken token)
         {
             return await Agent.Read_ByPositionId_async(this.PositionId, token);
         }
     }
-
 }

@@ -2,7 +2,7 @@
 
 namespace Contora.Web.Models
 {
-    public class AgentByDepartmentIdRequest
+    public class CaseByDepartmentId
     {
         private int departmentId;
 
@@ -15,9 +15,9 @@ namespace Contora.Web.Models
             }
         }
 
-        public async Task<List<Agent>> GetAgents(CancellationToken token)
+        public async Task<List<Case>> GetCases(CancellationToken token)
         {
-            return await Agent.Read_ByDepartmentId_async(this.DepartmentId, token);
+            return await Case.Read_ByDepartmentId_async(this.DepartmentId, token);
         }
     }
 }

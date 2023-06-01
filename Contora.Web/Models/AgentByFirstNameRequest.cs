@@ -13,7 +13,7 @@ namespace Contora.Web.Models
                 value.Length > 50 ? throw new ArgumentException("Имя должно быть менее 50 символов.") : value;
         }
 
-        public async Task<List<Agent>> GetAgent(CancellationToken token)
+        public async Task<List<Agent>> GetAgents(CancellationToken token)
         {
             return await Agent.Read_ByFirstName_async(this.FirstName, token);
         }

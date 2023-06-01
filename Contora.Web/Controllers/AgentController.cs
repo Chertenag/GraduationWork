@@ -24,35 +24,35 @@ namespace Contora.Web.Controllers
             return rez;
         }
 
-        [HttpGet]
+        [HttpGet("ByFirstName")]
         public ActionResult<IEnumerable<Agent>> Get([FromQuery] Models.AgentByFirstNameRequest value, CancellationToken token)
         {
-            var rez = value.GetAgent(token).Result;
+            var rez = value.GetAgents(token).Result;
             if (rez.Count == 0)
             {
-                return base.NotFound("Target with this ID does not exist.");
+                return base.NotFound("Target with this First name does not exist.");
             }
             return rez;
         }
 
-        [HttpGet]
+        [HttpGet("ByLastName")]
         public ActionResult<IEnumerable<Agent>> Get([FromQuery] Models.AgentByLastNameRequest value, CancellationToken token)
         {
-            var rez = value.GetAgent(token).Result;
+            var rez = value.GetAgents(token).Result;
             if (rez.Count == 0)
             {
-                return base.NotFound("Target with this ID does not exist.");
+                return base.NotFound("Target with this Last name does not exist.");
             }
             return rez;
         }
 
-        [HttpGet]
+        [HttpGet("ByDepartmentId")]
         public ActionResult<IEnumerable<Agent>> Get([FromQuery] Models.AgentByDepartmentIdRequest value, CancellationToken token)
         {
-            var rez = value.GetAgent(token).Result;
+            var rez = value.GetAgents(token).Result;
             if (rez.Count == 0)
             {
-                return base.NotFound("Target with this ID does not exist.");
+                return base.NotFound("Target with this Department ID does not exist.");
             }
             return rez;
         }

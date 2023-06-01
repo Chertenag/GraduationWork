@@ -57,11 +57,9 @@ public partial class Agent
 
     public static async Task Create_async(Agent value, CancellationToken token)
     {
-        using (var contex = new ContoraContext())
-        {
-            await contex.AddAsync(value, token);
-            await contex.SaveChangesAsync(token);
-        }
+        using var contex = new ContoraContext();
+        await contex.AddAsync(value, token);
+        await contex.SaveChangesAsync(token);
     }
 
     public static async Task<List<Agent>> Read_All_async(CancellationToken token)
