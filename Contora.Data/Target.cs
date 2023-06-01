@@ -7,7 +7,7 @@ namespace Contora.Data;
 
 public partial class Target
 {
-    public Target(int id, string firstName, string lastName, string? middleName, int caseId, 
+    public Target(int id, string firstName, string lastName, string? middleName, int caseId,
         string? phone, DateOnly? birthdate, string? address, string? additionalInfo)
     {
         Id = id;
@@ -42,7 +42,7 @@ public partial class Target
     public virtual Case Case { get; set; } = null!;
 
     public static async Task Create_async(int id, string fName, string lName, string? mName,
-    int caseId, string? phone, DateOnly? bDay, string? address, string? addInfo, CancellationToken token)
+        int caseId, string? phone, DateOnly? bDay, string? address, string? addInfo, CancellationToken token)
     {
         using (var contex = new ContoraContext())
         {
@@ -103,7 +103,7 @@ public partial class Target
         }
     }
 
-    public static async Task Delete_byId_async(int id, CancellationToken token)
+    public static async Task Delete_ById_async(int id, CancellationToken token)
     {
         using (var contex = new ContoraContext())
         {

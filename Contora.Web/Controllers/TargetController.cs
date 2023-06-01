@@ -52,9 +52,9 @@ namespace Contora.Web.Controllers
         {
             if (Target.Read_ById_async(id, token).Result.Count == 0)
             {
-                return base.NotFound();
+                return base.NotFound("Target with this ID does not exist.");
             }
-            Target.Delete_byId_async(id, CancellationToken.None).Wait();
+            Target.Delete_ById_async(id, CancellationToken.None).Wait();
             return base.Ok();
         }
     }
