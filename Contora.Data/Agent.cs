@@ -97,6 +97,15 @@ public partial class Agent
             .ToListAsync(token);
     }
 
+    public static async Task<List<Agent>> Read_ByFullName_async(string fName, string lName, string? mName, CancellationToken token)
+    {
+        using var contex = new ContoraContext();
+        return await contex.Agents
+            .AsNoTracking()
+            .Where(a => a.FirstName == fName && a.LastName == lName && a.MiddleName == mName)
+            .ToListAsync(token);
+    }
+
     public static async Task<List<Agent>> Read_ByDepartmentId_async(int depId, CancellationToken token)
     {
         using var contex = new ContoraContext();

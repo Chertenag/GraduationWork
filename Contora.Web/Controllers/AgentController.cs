@@ -24,10 +24,22 @@ namespace Contora.Web.Controllers
             return rez;
         }
 
-        [HttpGet("ByFirstName")]
-        public ActionResult<IEnumerable<Agent>> Get([FromQuery] Models.AgentByFirstNameRequest value, CancellationToken token)
+        [HttpGet("ByFullName")]
+        public ActionResult<IEnumerable<Agent>> GetByFullName([FromQuery] Models.AgentByFullNameRequest value, CancellationToken token)
         {
-            var rez = value.GetAgents(token).Result;
+            var rez = Agent.Read_ByFullName_async(value.FirstName, value.LastName, value.MidleName, token).Result;
+            if (rez.Count == 0)
+            {
+                return base.NotFound("Target with this name does not exist.");
+            }
+            return rez;
+        }
+
+
+        [HttpGet("ByFirstName")]
+        public ActionResult<IEnumerable<Agent>> GetByFirstName(string firstName, CancellationToken token)
+        {
+            var rez = Agent.Read_ByFirstName_async(firstName, token).Result;
             if (rez.Count == 0)
             {
                 return base.NotFound("Target with this First name does not exist.");
@@ -36,9 +48,9 @@ namespace Contora.Web.Controllers
         }
 
         [HttpGet("ByLastName")]
-        public ActionResult<IEnumerable<Agent>> Get([FromQuery] Models.AgentByLastNameRequest value, CancellationToken token)
+        public ActionResult<IEnumerable<Agent>> GetByLastName(string lastName, CancellationToken token)
         {
-            var rez = value.GetAgents(token).Result;
+            var rez = Agent.Read_ByLastName_async(lastName, token).Result;
             if (rez.Count == 0)
             {
                 return base.NotFound("Target with this Last name does not exist.");
@@ -47,9 +59,9 @@ namespace Contora.Web.Controllers
         }
 
         [HttpGet("ByDepartmentId")]
-        public ActionResult<IEnumerable<Agent>> Get([FromQuery] Models.AgentByDepartmentIdRequest value, CancellationToken token)
+        public ActionResult<IEnumerable<Agent>> GetByDepartmentId(int depId, CancellationToken token)
         {
-            var rez = value.GetAgents(token).Result;
+            var rez = Agent.Read_ByDepartmentId_async(depId, token).Result;
             if (rez.Count == 0)
             {
                 return base.NotFound("Target with this Department ID does not exist.");

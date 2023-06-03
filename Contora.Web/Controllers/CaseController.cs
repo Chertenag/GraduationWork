@@ -26,10 +26,10 @@ namespace Contora.Web.Controllers
 
         }
 
-        [HttpGet("ByDepId")]
-        public ActionResult<IEnumerable<Case>> Get([FromQuery] CaseByBothAgentId value, CancellationToken token)
+        [HttpGet("ByBothAgentsId")]
+        public ActionResult<IEnumerable<Case>> GetByBothAgentId(int agentId, CancellationToken token)
         {
-            var rez = value.GetCases(token).Result;
+            var rez = Case.Read_ByBothAgentId_async(agentId, token).Result;
             if (rez.Count == 0)
             {
                 return base.NotFound("Case with this Department ID does not exist.");

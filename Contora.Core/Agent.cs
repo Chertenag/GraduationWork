@@ -229,6 +229,30 @@ public class Agent
     }
 
     /// <summary>
+    /// Поиск записей в таблице Agent по полному имени.
+    /// </summary>
+    /// <param name="fName">Имя.</param>
+    /// <param name="lName">Фамилия.</param>
+    /// <param name="mName">Отчество.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
+    public static async Task<List<Agent>> Read_ByFullName_async(string fName, string lName, string? mName, CancellationToken token)
+    {
+        if (string.IsNullOrEmpty(fName))
+        {
+            throw new ArgumentException($"Имя не может быть неопределенным или пустым.", nameof(fName));
+        }
+
+        if (string.IsNullOrEmpty(lName))
+        {
+            throw new ArgumentException($"Фамилия не может быть неопределенной или пустой.", nameof(lName));
+        }
+
+        var rez = await Data.Agent.Read_ByFullName_async(fName, lName, mName, token);
+        return rez.Select(MapperFromDataAgent).ToList();
+    }
+
+    /// <summary>
     /// Поиск записей в таблице Agent по ИД отдела.
     /// </summary>
     /// <param name="depId">ИД отдела.</param>
