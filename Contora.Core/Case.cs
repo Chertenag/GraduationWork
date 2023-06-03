@@ -202,7 +202,7 @@
         }
 
         /// <summary>
-        /// Мапинг объекта Case из Data в Core уровень.
+        /// Мапинг объекта Case из Core в Data уровень.
         /// </summary>
         /// <param name="value">Объект типа <see cref="Case"/>.</param>
         /// <returns>Объект типа <see cref="Data.Case"/>.</returns>

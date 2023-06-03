@@ -307,7 +307,7 @@ public class Agent
     }
 
     /// <summary>
-    /// Мапинг объекта Agent из Data в Core уровень.
+    /// Мапинг объекта Agent из Core в Data уровень.
     /// </summary>
     /// <param name="value">Объект типа <see cref="Agent"/>.</param>
     /// <returns>Объект типа <see cref="Data.Agent"/>.</returns>
