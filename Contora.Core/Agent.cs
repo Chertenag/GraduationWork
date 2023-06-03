@@ -1,5 +1,8 @@
 ﻿namespace Contora.Core;
 
+/// <summary>
+/// Объект представления таблицы Agent в БД, который содержит дополнительную бизнес-логику.
+/// </summary>
 public class Agent
 {
     private int id;
@@ -13,169 +16,313 @@ public class Agent
     private string? phone;
     private string? address;
 
-    public Agent() { }
-
-    public Agent(int id, string firstName, string lastName, string? middleName, int departmentId, int positionId, int rankId, int statusId, string? phone, string? address)
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Agent"/> class.
+    /// </summary>
+    public Agent()
     {
-        Id = id;
-        FirstName = firstName;
-        LastName = lastName;
-        MiddleName = middleName;
-        DepartmentId = departmentId;
-        PositionId = positionId;
-        RankId = rankId;
-        StatusId = statusId;
-        Phone = phone;
-        Address = address;
     }
 
-    public int Id { get => id; set => id = value; }
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Agent"/> class.
+    /// </summary>
+    /// <param name="id">ИД.</param>
+    /// <param name="firstName">Имя.</param>
+    /// <param name="lastName">Фамилия.</param>
+    /// <param name="middleName">Отчество.</param>
+    /// <param name="departmentId">ИД отдела.</param>
+    /// <param name="positionId">ИД должности.</param>
+    /// <param name="rankId">ИД звания.</param>
+    /// <param name="statusId">ИД статуса.</param>
+    /// <param name="phone">Телефон.</param>
+    /// <param name="address">Адрес.</param>
+    public Agent(int id, string firstName, string lastName, string? middleName, int departmentId, int positionId, int rankId, int statusId, string? phone, string? address)
+    {
+        this.Id = id;
+        this.FirstName = firstName;
+        this.LastName = lastName;
+        this.MiddleName = middleName;
+        this.DepartmentId = departmentId;
+        this.PositionId = positionId;
+        this.RankId = rankId;
+        this.StatusId = statusId;
+        this.Phone = phone;
+        this.Address = address;
+    }
+
+    /// <summary>
+    /// Gets or sets ИД в БД.
+    /// </summary>
+    public int Id { get => this.id; set => this.id = value; }
+
+    /// <summary>
+    /// Gets or sets Имя.
+    /// </summary>
     public string FirstName
     {
-        get => firstName;
+        get => this.firstName;
         set
         {
-            firstName = string.IsNullOrEmpty(value) ? throw new ArgumentException("Имя не должно быть пустым.") :
+            this.firstName = string.IsNullOrEmpty(value) ? throw new ArgumentException("Имя не должно быть пустым.") :
                 value.Length > 50 ? throw new ArgumentException("Имя должно быть менее 50 символов.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets Фамилия.
+    /// </summary>
     public string LastName
     {
-        get => lastName;
+        get => this.lastName;
         set
         {
-            lastName = string.IsNullOrEmpty(value) ? throw new ArgumentException("Фамилия не должна быть пустой.") :
+            this.lastName = string.IsNullOrEmpty(value) ? throw new ArgumentException("Фамилия не должна быть пустой.") :
                 value.Length > 50 ? throw new ArgumentException("Фамилия должна быть не более 50 символов.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets Отчество.
+    /// </summary>
     public string? MiddleName
     {
-        get => middleName;
+        get => this.middleName;
         set
         {
-            middleName = string.IsNullOrEmpty(value) ? null :
+            this.middleName = string.IsNullOrEmpty(value) ? null :
                 value.Length > 50 ? throw new ArgumentException("Отчество должно быть не более 50 символов.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets ИД отдела.
+    /// </summary>
     public int DepartmentId
     {
-        get => departmentId;
+        get => this.departmentId;
         set
         {
-            departmentId = value < 1 ? throw new ArgumentException("ID отдела не может быть 0 или отрицательным.") : value;
+            this.departmentId = value < 1 ? throw new ArgumentException("ID отдела не может быть 0 или отрицательным.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets ИД должности.
+    /// </summary>
     public int PositionId
     {
-        get => positionId;
+        get => this.positionId;
         set
         {
-            positionId = value < 1 ? throw new ArgumentException("ID должности не может быть 0 или отрицательным.") : value;
+            this.positionId = value < 1 ? throw new ArgumentException("ID должности не может быть 0 или отрицательным.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets ИД звания.
+    /// </summary>
     public int RankId
     {
-        get => rankId;
+        get => this.rankId;
         set
         {
-            rankId = value < 1 ? throw new ArgumentException("ID звания не может быть 0 или отрицательным.") : value;
+            this.rankId = value < 1 ? throw new ArgumentException("ID звания не может быть 0 или отрицательным.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets ИД статуса.
+    /// </summary>
     public int StatusId
     {
-        get => statusId;
+        get => this.statusId;
         set
         {
-            statusId = value < 1 ? throw new ArgumentException("ID статуса не может быть 0 или отрицательным.") : value;
+            this.statusId = value < 1 ? throw new ArgumentException("ID статуса не может быть 0 или отрицательным.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets Телефон.
+    /// </summary>
     public string? Phone
     {
-        get => phone;
+        get => this.phone;
         set
         {
-            phone = string.IsNullOrEmpty(value) ? null :
+            this.phone = string.IsNullOrEmpty(value) ? null :
                 value.Length > 20 ? throw new ArgumentException("Телефон должен быть менее 20 сиволов.") : value;
         }
     }
+
+    /// <summary>
+    /// Gets or sets Адрес.
+    /// </summary>
     public string? Address
     {
-        get => address;
+        get => this.address;
         set
         {
-            address = string.IsNullOrEmpty(value) ? null :
+            this.address = string.IsNullOrEmpty(value) ? null :
                 value.Length > 100 ? throw new ArgumentException("Адрес должен быть менее 100 сиволов.") : value;
         }
     }
 
+    /// <summary>
+    /// Добавление в БД новой записи.
+    /// </summary>
+    /// <param name="agent">Объект <see cref="Agent"/> класса.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns> <see cref="Task"/>.</returns>
     public static async Task Create_async(Agent agent, CancellationToken token)
     {
+        // В БД поле ID автоинкремент.
+        agent.Id = 0;
         await Data.Agent.Create_async(MapperToDataAgent(agent), token);
     }
 
+    /// <summary>
+    /// Запрос на чтение всех записей из таблицы Agent.
+    /// </summary>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public static async Task<List<Agent>> Read_All_async(CancellationToken token)
     {
         var rez = await Data.Agent.Read_All_async(token);
         return rez.Select(MapperFromDataAgent).ToList();
     }
 
+    /// <summary>
+    /// Поиск записей в таблице Agent по ИД.
+    /// </summary>
+    /// <param name="id">ИД в БД.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public static async Task<List<Agent>> Read_ById_async(int id, CancellationToken token)
     {
         var rez = await Data.Agent.Read_ById_async(id, token);
         return rez.Select(MapperFromDataAgent).ToList();
     }
 
+    /// <summary>
+    /// Поиск записей в таблице Agent по имени.
+    /// </summary>
+    /// <param name="fName">Имя.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public static async Task<List<Agent>> Read_ByFirstName_async(string fName, CancellationToken token)
     {
         var rez = await Data.Agent.Read_ByFirstName_async(fName, token);
         return rez.Select(MapperFromDataAgent).ToList();
     }
 
+    /// <summary>
+    /// Поиск записей в таблице Agent по фамилии.
+    /// </summary>
+    /// <param name="lName">Фамилия.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public static async Task<List<Agent>> Read_ByLastName_async(string lName, CancellationToken token)
     {
         var rez = await Data.Agent.Read_ByLastName_async(lName, token);
         return rez.Select(MapperFromDataAgent).ToList();
     }
 
+    /// <summary>
+    /// Поиск записей в таблице Agent по ИД отдела.
+    /// </summary>
+    /// <param name="depId">ИД отдела.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public static async Task<List<Agent>> Read_ByDepartmentId_async(int depId, CancellationToken token)
     {
         var rez = await Data.Agent.Read_ByDepartmentId_async(depId, token);
         return rez.Select(MapperFromDataAgent).ToList();
     }
 
+    /// <summary>
+    /// Поиск записей в таблице Agent по ИД должности.
+    /// </summary>
+    /// <param name="posId">ИД должности.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public static async Task<List<Agent>> Read_ByPositionId_async(int posId, CancellationToken token)
     {
         var rez = await Data.Agent.Read_ByPositionId_async(posId, token);
         return rez.Select(MapperFromDataAgent).ToList();
     }
 
+    /// <summary>
+    /// Поиск записей в таблице Agent по ИД статуса.
+    /// </summary>
+    /// <param name="statusId">ИД статуса.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task{TResult}"/> representing the result of the asynchronous operation.</returns>
     public static async Task<List<Agent>> Read_ByStatusId_async(int statusId, CancellationToken token)
     {
         var rez = await Data.Agent.Read_ByStatusId_async(statusId, token);
         return rez.Select(MapperFromDataAgent).ToList();
     }
 
+    /// <summary>
+    /// Обновление выбраной записи в таблице Agent.
+    /// </summary>
+    /// <param name="agent">Объект типа Agent, который необходимо обновить в БД.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
     public static async Task Update_async(Agent agent, CancellationToken token)
     {
         await Data.Agent.Update_async(MapperToDataAgent(agent), token);
     }
 
+    /// <summary>
+    /// Удаление записи в таблице Agent по ИД.
+    /// </summary>
+    /// <param name="id">ИД в БД.</param>
+    /// <param name="token">Токен отмены.</param>
+    /// <returns>A <see cref="Task"/> representing the result of the asynchronous operation.</returns>
     public static async Task Delete_ById_async(int id, CancellationToken token)
     {
         await Data.Agent.Delete_ById_async(id, token);
     }
 
-    private static Agent MapperFromDataAgent(Data.Agent agent)
+    /// <summary>
+    /// Мапинг объекта Agent из Data в Core уровень.
+    /// </summary>
+    /// <param name="value">Объект типа <see cref="Data.Agent"/>.</param>
+    /// <returns>Объект типа <see cref="Agent"/>.</returns>
+    private static Agent MapperFromDataAgent(Data.Agent value)
     {
-        return new Core.Agent(agent.Id, agent.FirstName, agent.LastName, agent.MiddleName, 
-            agent.DepartmentId, agent.PositionId, agent.RankId, agent.StatusId,
-            agent.Phone, agent.Address);
+        return new Core.Agent(
+            value.Id,
+            value.FirstName,
+            value.LastName,
+            value.MiddleName,
+            value.DepartmentId,
+            value.PositionId,
+            value.RankId,
+            value.StatusId,
+            value.Phone,
+            value.Address);
     }
 
-    private static Data.Agent MapperToDataAgent(Core.Agent agent)
+    /// <summary>
+    /// Мапинг объекта Agent из Data в Core уровень.
+    /// </summary>
+    /// <param name="value">Объект типа <see cref="Agent"/>.</param>
+    /// <returns>Объект типа <see cref="Data.Agent"/>.</returns>
+    private static Data.Agent MapperToDataAgent(Core.Agent value)
     {
-        return new Data.Agent(agent.Id, agent.FirstName, agent.LastName ,agent.MiddleName, 
-            agent.DepartmentId, agent.PositionId, agent.RankId, agent.StatusId, 
-            agent.Phone, agent.Address);
+        return new Data.Agent(
+            value.Id,
+            value.FirstName,
+            value.LastName,
+            value.MiddleName,
+            value.DepartmentId,
+            value.PositionId,
+            value.RankId,
+            value.StatusId,
+            value.Phone,
+            value.Address);
     }
 }

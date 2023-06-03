@@ -3,11 +3,16 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33712.159
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contora.Web", "Contora.Web\Contora.Web.csproj", "{1A05E793-CB3A-4BBB-9FE7-08BDA1145EE6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contora.Web", "Contora.Web\Contora.Web.csproj", "{1A05E793-CB3A-4BBB-9FE7-08BDA1145EE6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contora.Core", "Contora.Core\Contora.Core.csproj", "{77ED86B0-64DD-422D-823A-1B01EDF33BDD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contora.Core", "Contora.Core\Contora.Core.csproj", "{77ED86B0-64DD-422D-823A-1B01EDF33BDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contora.Data", "Contora.Data\Contora.Data.csproj", "{16E4A2C8-F591-4EF9-891E-E2726048CC80}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contora.Data", "Contora.Data\Contora.Data.csproj", "{16E4A2C8-F591-4EF9-891E-E2726048CC80}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{94E251E5-B877-464E-9F16-9D3885C994D9}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

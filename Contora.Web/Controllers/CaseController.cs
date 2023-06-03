@@ -27,7 +27,7 @@ namespace Contora.Web.Controllers
         }
 
         [HttpGet("ByDepId")]
-        public ActionResult<IEnumerable<Case>> Get([FromQuery] CaseByDepartmentId value, CancellationToken token)
+        public ActionResult<IEnumerable<Case>> Get([FromQuery] CaseByBothAgentId value, CancellationToken token)
         {
             var rez = value.GetCases(token).Result;
             if (rez.Count == 0)
